@@ -1,5 +1,5 @@
 /*
-tip_balloon.js  v. 1.6
+tip_balloon.js  v. 1.8
 
 The latest version is available at
 http://www.walterzorn.com
@@ -7,7 +7,7 @@ or http://www.devira.com
 or http://www.walterzorn.de
 
 Initial author: Walter Zorn
-Last modified: 15.7.2008
+Last modified: 7.11.2008
 
 Extension for the tooltip library wz_tooltip.js.
 Implements balloon tooltips.
@@ -26,14 +26,15 @@ if(typeof config == "undefined")
 // e.g. from config. Balloon a command BALLOON will automatically be
 // created.
 
-//===================  GLOBAL TOOPTIP CONFIGURATION  =========================//
+//===================  GLOBAL TOOLTIP CONFIGURATION  =========================//
 config. Balloon				= false	// true or false - set to true if you want this to be the default behaviour
-config. BalloonImgPath		= "/pub/TWiki/ToolTipPlugin/" // Path to images (border, corners, stem), in quotes. Path must be relative to your HTML file.
+config. BalloonImgPath		= "../scripts/tip_balloon/" // Path to images (border, corners, stem), in quotes. Path must be relative to your HTML file.
 // Sizes of balloon images
 config. BalloonEdgeSize		= 6		// Integer - sidelength of quadratic corner images
 config. BalloonStemWidth	= 15	// Integer
 config. BalloonStemHeight	= 19	// Integer
 config. BalloonStemOffset	= -7	// Integer - horizontal offset of left stem edge from mouse (recommended: -stemwidth/2 to center the stem above the mouse)
+config. BalloonImgExt		= "gif";// File name extension of default balloon images, e.g. "gif" or "png"
 //=======  END OF TOOLTIP CONFIG, DO NOT CHANGE ANYTHING BELOW  ==============//
 
 
@@ -70,7 +71,7 @@ balloon.OnCreateContentString = function()
 	if(!tt_aV[BALLOON])
 		return false;
 		
-	var aImg, sImgZ, sCssCrn, sVaT, sVaB, sCssImg;
+	var aImg, sImgZ, sCssCrn, sVaT, sVaB, sCss0;
 
 	// Cache balloon images in advance:
 	// Either use the pre-cached default images...
@@ -78,65 +79,65 @@ balloon.OnCreateContentString = function()
 		aImg = balloon.aDefImg;
 	// ...or load images from different directory
 	else
-		aImg = Balloon_CacheImgs(tt_aV[BALLOONIMGPATH]);
-	sCssCrn = ' style="position:relative;width:' + tt_aV[BALLOONEDGESIZE] + 'px;padding:0px;margin:0px;overflow:hidden;line-height:0px;';
+		aImg = Balloon_CacheImgs(tt_aV[BALLOONIMGPATH], tt_aV[BALLOONIMGEXT]);
+	sCss0 = 'padding:0;margin:0;border:0;line-height:0;overflow:hidden;';
+	sCssCrn = ' style="position:relative;width:' + tt_aV[BALLOONEDGESIZE] + 'px;' + sCss0 + 'overflow:hidden;';
 	sVaT = 'vertical-align:top;" valign="top"';
 	sVaB = 'vertical-align:bottom;" valign="bottom"';
-	sCssImg = 'padding:0px;margin:0px;border:0px;';
-	sImgZ = '" style="' + sCssImg + '" />';
+	sImgZ = '" style="' + sCss0 + '" />';
 	
-	tt_sContent = '<table border="0" cellpadding="0" cellspacing="0" style="width:auto;padding:0px;margin:0px;left:0px;top:0px;"><tr>'
-				// Left-top corner
-				+ '<td' + sCssCrn + sVaB + '>'
-				+ '<img src="' + aImg[1].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
-				+ '</td>'
-				// Top border
-				+ '<td valign="bottom" style="position:relative;padding:0px;margin:0px;overflow:hidden;">'
-				+ '<img id="bALlOOnT" style="position:relative;top:1px;z-index:1;display:none;' + sCssImg + '" src="' + aImg[9].src + '" width="' + tt_aV[BALLOONSTEMWIDTH] + '" height="' + tt_aV[BALLOONSTEMHEIGHT] + '" />'
-				+ '<div style="position:relative;z-index:0;padding:0px;margin:0px;overflow:hidden;width:auto;height:' + tt_aV[BALLOONEDGESIZE] + 'px;background-image:url(' + aImg[2].src + ');">'
-				+ '</div>'
-				+ '</td>'
-				// Right-top corner
-				+ '<td' + sCssCrn + sVaB + '>'
-				+ '<img src="' + aImg[3].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
-				+ '</td>'
-				+ '</tr><tr>'
-				// Left border
-				+ '<td style="position:relative;padding:0px;margin:0px;width:' + tt_aV[BALLOONEDGESIZE] + 'px;overflow:hidden;background-image:url(' + aImg[8].src + ');">'
-				// Redundant image for bugous old Geckos that won't auto-expand TD height to 100%
-				+ '<img width="' + tt_aV[BALLOONEDGESIZE] + '" height="100%" src="' + aImg[8].src + sImgZ
-				+ '</td>'
-				// Content
-				+ '<td id="bALlO0nBdY" style="position:relative;line-height:normal;'
-				+ ';background-image:url(' + aImg[0].src + ')'
-				+ ';color:' + tt_aV[FONTCOLOR]
-				+ ';font-family:' + tt_aV[FONTFACE]
-				+ ';font-size:' + tt_aV[FONTSIZE]
-				+ ';font-weight:' + tt_aV[FONTWEIGHT]
-				+ ';text-align:' + tt_aV[TEXTALIGN]
-				+ ';padding:' + balloon.padding + 'px'
-				+ ';width:' + ((balloon.width > 0) ? (balloon.width + 'px') : 'auto')
-				+ ';">' + tt_sContent + '</td>'
-				// Right border
-				+ '<td style="position:relative;padding:0px;margin:0px;width:' + tt_aV[BALLOONEDGESIZE] + 'px;overflow:hidden;background-image:url(' + aImg[4].src + ');">'
-				// Image redundancy for bugous old Geckos that won't auto-expand TD height to 100%
-				+ '<img width="' + tt_aV[BALLOONEDGESIZE] + '" height="100%" src="' + aImg[4].src + sImgZ
-				+ '</td>'
-				+ '</tr><tr>'
-				// Left-bottom corner
-				+ '<td' + sCssCrn + sVaT + '>'
-				+ '<img src="' + aImg[7].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
-				+ '</td>'
-				// Bottom border
-				+ '<td valign="top" style="position:relative;padding:0px;margin:0px;overflow:hidden;">'
-				+ '<div style="position:relative;left:0px;top:0px;padding:0px;margin:0px;overflow:hidden;width:auto;height:' + tt_aV[BALLOONEDGESIZE] + 'px;background-image:url(' + aImg[6].src + ');"></div>'
-				+ '<img id="bALlOOnB" style="position:relative;top:-1px;left:2px;z-index:1;display:none;' + sCssImg + '" src="' + aImg[10].src + '" width="' + tt_aV[BALLOONSTEMWIDTH] + '" height="' + tt_aV[BALLOONSTEMHEIGHT] + '" />'
-				+ '</td>'
-				// Right-bottom corner
-				+ '<td' + sCssCrn + sVaT + '>'
-				+ '<img src="' + aImg[5].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
-				+ '</td>'
-				+ '</tr></table>';
+	tt_sContent = '<table border="0" cellpadding="0" cellspacing="0" style="width:auto;padding:0;margin:0;left:0;top:0;"><tr>'
+		// Left-top corner
+		+ '<td' + sCssCrn + sVaB + '>'
+		+ '<img src="' + aImg[1].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
+		+ '</td>'
+		// Top border
+		+ '<td valign="bottom" style="position:relative;' + sCss0 + '">'
+		+ '<img id="bALlOOnT" style="position:relative;top:1px;z-index:1;display:none;' + sCss0 + '" src="' + aImg[9].src + '" width="' + tt_aV[BALLOONSTEMWIDTH] + '" height="' + tt_aV[BALLOONSTEMHEIGHT] + '" />'
+		+ '<div style="position:relative;z-index:0;top:0;' + sCss0 + 'width:auto;height:' + tt_aV[BALLOONEDGESIZE] + 'px;background-image:url(' + aImg[2].src + ');">'
+		+ '</div>'
+		+ '</td>'
+		// Right-top corner
+		+ '<td' + sCssCrn + sVaB + '>'
+		+ '<img src="' + aImg[3].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
+		+ '</td>'
+		+ '</tr><tr>'
+		// Left border
+		+ '<td style="position:relative;' + sCss0 + 'width:' + tt_aV[BALLOONEDGESIZE] + 'px;background-image:url(' + aImg[8].src + ');">'
+		// Redundant image for bugous old Geckos that won't auto-expand TD height to 100%
+		+ '<img width="' + tt_aV[BALLOONEDGESIZE] + '" height="100%" src="' + aImg[8].src + sImgZ
+		+ '</td>'
+		// Content
+		+ '<td id="bALlO0nBdY" style="position:relative;line-height:normal;'
+		+ ';background-image:url(' + aImg[0].src + ')'
+		+ ';color:' + tt_aV[FONTCOLOR]
+		+ ';font-family:' + tt_aV[FONTFACE]
+		+ ';font-size:' + tt_aV[FONTSIZE]
+		+ ';font-weight:' + tt_aV[FONTWEIGHT]
+		+ ';text-align:' + tt_aV[TEXTALIGN]
+		+ ';padding:' + balloon.padding + 'px'
+		+ ';width:' + ((balloon.width > 0) ? (balloon.width + 'px') : 'auto')
+		+ ';">' + tt_sContent + '</td>'
+		// Right border
+		+ '<td style="position:relative;' + sCss0 + 'width:' + tt_aV[BALLOONEDGESIZE] + 'px;background-image:url(' + aImg[4].src + ');">'
+		// Image redundancy for bugous old Geckos that won't auto-expand TD height to 100%
+		+ '<img width="' + tt_aV[BALLOONEDGESIZE] + '" height="100%" src="' + aImg[4].src + sImgZ
+		+ '</td>'
+		+ '</tr><tr>'
+		// Left-bottom corner
+		+ '<td' + sCssCrn + sVaT + '>'
+		+ '<img src="' + aImg[7].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
+		+ '</td>'
+		// Bottom border
+		+ '<td valign="top" style="position:relative;' + sCss0 + '">'
+		+ '<div style="position:relative;left:0;top:0;' + sCss0 + 'width:auto;height:' + tt_aV[BALLOONEDGESIZE] + 'px;background-image:url(' + aImg[6].src + ');"></div>'
+		+ '<img id="bALlOOnB" style="position:relative;top:-1px;left:2px;z-index:1;display:none;' + sCss0 + '" src="' + aImg[10].src + '" width="' + tt_aV[BALLOONSTEMWIDTH] + '" height="' + tt_aV[BALLOONSTEMHEIGHT] + '" />'
+		+ '</td>'
+		// Right-bottom corner
+		+ '<td' + sCssCrn + sVaT + '>'
+		+ '<img src="' + aImg[5].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
+		+ '</td>'
+		+ '</tr></table>';//alert(tt_sContent);
 	return true;
 };
 balloon.OnSubDivsCreated = function()
@@ -183,7 +184,7 @@ function Balloon_CalcStemX()
 	var x = tt_musX - tt_x + tt_aV[BALLOONSTEMOFFSET] - tt_aV[BALLOONEDGESIZE];
 	return Math.max(Math.min(x, tt_w - tt_aV[BALLOONSTEMWIDTH] - (tt_aV[BALLOONEDGESIZE] << 1) - 2), 2);
 }
-function Balloon_CacheImgs(sPath)
+function Balloon_CacheImgs(sPath, sExt)
 {
 	var asImg = ["background", "lt", "t", "rt", "r", "rb", "b", "lb", "l", "stemt", "stemb"],
 	n = asImg.length,
@@ -193,7 +194,7 @@ function Balloon_CacheImgs(sPath)
 	while(n)
 	{--n;
 		img = aImg[n] = new Image();
-		img.src = sPath + asImg[n] + ".gif";  //  Change to ".png" if you want to use PNG images
+		img.src = sPath + asImg[n] + "." + sExt;
 	}
 	return aImg;
 }
@@ -215,6 +216,6 @@ function Balloon_PreCacheDefImgs()
 	if(config.BalloonImgPath.charAt(config.BalloonImgPath.length - 1) != '/')
 		config.BalloonImgPath += "/";
 	// Preload default images into array
-	balloon.aDefImg = Balloon_CacheImgs(config.BalloonImgPath);
+	balloon.aDefImg = Balloon_CacheImgs(config.BalloonImgPath, config.BalloonImgExt);
 }
 Balloon_PreCacheDefImgs();

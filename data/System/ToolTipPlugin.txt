@@ -1,0 +1,164 @@
+%META:TOPICINFO{author="BaseUserMapping_333" date="1228539969" format="1.1" version="1.2"}%
+---+!! <nop>%TOPIC%
+
+This is a plugin to generate dynamic Tool Tips in HTML + javascript (mouseover event). This tooltip is based on http://www.walterzorn.com/tooltip/tooltip_e.htm This plugin provides a ==TOOLTIP== Macro that expands into the html and javascript to implement a Tooltip. Also includes the balloon _Simple Skin_ by Stasiek Płoski (Homepage: http://www.flupy.net/stasiek ).
+
+%TOC%
+
+---++ Examples
+
+%TABLE{sort="off" columnwidths="40%,30%,30%"}%
+
+| *Write (On a single line!)* | *Simulate* | *If Installed* |
+| ==%%NOP%TOOLTIP{TEXT="Whaoooo ! With such a tooltip, you can keep your topics light... and get better communication ! " FONTCOLOR="#336699" TITLE="Nice tooltip, no ?" SHADOWCOLOR="#ccaacc" FONTSIZE="18px" WIDTH="250"}% put your mouse here, you should see a tooltip %%NOP%TOOLTIP{END}%== | <img width="393" alt="example1.jpg" src="%ATTACHURLPATH%/example1.jpg" height="172" /> | %TOOLTIP{TEXT="Whaoooo ! With such a tooltip, you can keep your topics light... and get better communication ! "  FONTCOLOR="#336699" TITLE="Nice tooltip, no ?" SHADOWCOLOR="#ccaacc" FONTSIZE="18px" WIDTH="250" }% put your mouse here, you should see a tooltip %TOOLTIP{END}%. |
+| Customize the tip ==%%NOP%TOOLTIP{TEXT="there are soo many parameters..." BGCOLOR="#FF8000" FONTCOLOR="#00FF80" TITLE="PARAMETERS" SHADOWCOLOR="#ccaacc" FONTSIZE="30px" WIDTH="250" }%with parameters%%NOP%TOOLTIP{END}%== |  <img width="277" alt="Example 2" src="%ATTACHURL%/example2.jpg" height="219" />  | Customize the tip %TOOLTIP{TEXT="there are soo many parameters..." BGCOLOR="#FF8000" FONTCOLOR="#00FF80" TITLE="PARAMETERS" SHADOWCOLOR="#ccaacc" FONTSIZE="30px" WIDTH="250"}%with parameters%TOOLTIP{END}% |
+| ==%%NOP%TOOLTIP{TEXT="Set BALLOON=\"true\" The BALLOONIMGPATH will default to the %PUBURLPATH%/%SYSTEMWEB%/%TOPIC%/balloon/ path. " FONTCOLOR="#336699" SHADOWCOLOR="#ccaacc" FONTSIZE="18px" BALLOON="true" WIDTH="250"}% And with the latest version you can have Balloon style tips! %%NOP%TOOLTIP{END}%==.  There is also a simple ballon.  ==%%NOP%TOOLTIP{TEXT="Set BALLOON=\"true\"  The BALLOONIMGPATH for a simple ballon is %PUBURLPATH%/%SYSTEMWEB%/%TOPIC%/balloon_simple/ "  FONTCOLOR="#336699" BALLOONIMGPATH="/pub/System/ToolTipPlugin/balloon_simple" SHADOWCOLOR="#ccaacc" FONTSIZE="18px" BALLOON="true" WIDTH="250"}% A simple balloon layout %%NOP%TOOLTIP{END}%==| <img width="346" alt="Example of balloon tip" src="%ATTACHURL%/example3.jpg" height="202" /> | %TOOLTIP{TEXT="Set BALLOON=\"true\"  The BALLOONIMGPATH will default to the %PUBURLPATH%/%SYSTEMWEB%/%TOPIC%/balloon/ path "  FONTCOLOR="#336699" SHADOWCOLOR="#ccaacc" FONTSIZE="18px" BALLOON="true" WIDTH="250"}% And with the latest version you can have Balloon style tips! %TOOLTIP{END}%.<br /> _Note that presently MS Internet Explorer has trouble rendering the bottom corners due to some css conflict elsewhere on the page_ <br /> There is also a simple ballon.  %TOOLTIP{TEXT="Set BALLOON=\"true\"  The BALLOONIMGPATH for a simple ballon is %PUBURLPATH%/%SYSTEMWEB%/%TOPIC%/balloon_simple/ "  FONTCOLOR="#336699" BALLOONIMGPATH="/pub/System/ToolTipPlugin/balloon_simple" SHADOWCOLOR="#ccaacc" FONTSIZE="18px" BALLOON="true" WIDTH="250"}% A simple balloon layout %TOOLTIP{END}% |
+| ==%%NOP%TOOLTIP{TEXT="You can also insert &lt;%NOP%img src=\'%ATTACHURLPATH%/ToolTipPhoto.gif\' /&gt; gif/jpg photos and !WikiWords in your text... this is simply HTML! (but remember to escape single quotes (\'), double quotes (\") !I18N chars, etc :-)), and set STICKY=\"true\" if you want the links usable." STICKY="true" TITLE="PHOTOS !" FONTCOLOR="#336699" SHADOWCOLOR="#ccaacc" FONTSIZE="18px" WIDTH="250"}% insert photos and links %%NOP%TOOLTIP{END}%== | <img width="362" alt="Graphics and Links" src="%ATTACHURL%/example4.jpg" height="285" /> | %TOOLTIP{TEXT="You can also insert <img src=\'%ATTACHURLPATH%/ToolTipPhoto.gif\' /> gif/jpg photos and WikiWords in your text...  this is simply HTML! (but remember to escape single quotes (\'), double quotes (\") I18N chars, etc :-)), and set STICKY=\"true\" if you want the links usable." STICKY="true" TITLE="PHOTOS !" FONTCOLOR="#336699" SHADOWCOLOR="#ccaacc" FONTSIZE="18px" WIDTH="250"}% insert photos and links %TOOLTIP{END}% _This example is "Sticky" - you need to dismiss the popup by touching this or another tip with the mouse._ |
+| ==%%NOP%TOOLTIP{TEXT="You can set a background image to the tip" FONTCOLOR="#336699" TITLE="Background image" SHADOWCOLOR="#ccaacc" FONTSIZE="18px" WIDTH="190" BGIMG="%%NOP%ATTACHURLPATH%/ToolTipBackground.jpg" STICKY="true" DURATION="5000"}% This tip has a background image and is "sticky" for 5 seconds.%%NOP%TOOLTIP{END}% too !== | <img width="299" alt="Example of background image" src="%ATTACHURL%/example5.jpg" height="156" /> | %TOOLTIP{TEXT="You can set a background image to the tip" FONTCOLOR="#336699" TITLE="Background image" SHADOWCOLOR="#ccaacc" FONTSIZE="18px" WIDTH="190" BGIMG="%ATTACHURLPATH%/ToolTipBackground.jpg" STICKY="true" DURATION="5000" }% This tip has a background image and is "sticky" for 5 seconds %TOOLTIP{END}% |
+| ==%%NOP%TOOLTIP{ URL="../System/SiteMap" TARGET="_blank" INCLUDE="SiteMap" STICKY="true" BORDERCOLOR="#333366" PADDING="0" BORDERWIDTH="1" FONTSIZE="12px" FONTCOLOR="black" ABOVE="false" OFFSETY="100" WIDTH="800" CENTERWINDOW="true" CENTERALWAYS="true"}% Raw included <nop>SiteMap as <nop>ToolTip %%NOP%TOOLTIP%== | __[No Example]__ | %TOOLTIP{ URL="../System/SiteMap" TARGET="_blank" INCLUDE="SiteMap" STICKY="true" BORDERCOLOR="#333366"  PADDING="0" BORDERWIDTH="1" FONTSIZE="12px" FONTCOLOR="black" ABOVE="false" OFFSETY="100" WIDTH="800" CENTERWINDOW="true" CENTERALWAYS="true"}% Raw included <nop>SiteMap as <nop>ToolTip %TOOLTIP% (This one is also a link to the sitemap on the current web, and will follow the scroll.) |
+
+---++ Parameters
+
+All walterzorn tooltip parameters are allowed and simply passed to the javascript applet. For a complete list refer to http://www.walterzorn.com/tooltip/tooltip_e.htm Pass the parameters using the standard Foswiki format - Parameter="value". Use of %<nop>TOOLTIP{END}% to close the tip text is mandatory.
+
+%TABLE{sort="off"}%
+| *name* | *usage* | *example* |
+| *Foswiki Specific Parameters* |||
+| END (or empty parameter) | End of url text that activate the tooltip (mandatory !). | %<nop>TOOLTIP{END}% |
+| INCLUDE | Include a topic text into the tooltip. Included topic text should only content simple Foswiki or HTML datas. | INCLUDE="web.topic" or INCLUDE="\"topic\" section=\"sect1\"" The parameter must include any quotes that would normally be required in a %INCLUDE statement. Embedded quotes must be escaped with backslash (\"). Example: ==INCLUDE="\"Myweb.MyTopic\" section=\"mysection\""== |
+| TARGET | Adds the target= operand to the URL. | TARGET="_blank" opens the link in a new window |
+| TEXT | <nop>ToolTip text. | Single and double quotes within this string must be escaped with backslash, \" \' |
+| URL | Specifies link if this tip is also a link, otherwise defaults to null link | URL=<nop>http://foswiki.org or web relative URL="../System/SiteMap" |
+| *wz_tooltip parameters - see http://www.walterzorn.com/tooltip/tooltip_e.htm* |||
+| ABOVE | Places the tooltip above the mousepointer. Additionally applying the OFFSETY command allows to set the vertical distance from the mousepointer. | ABOVE="true" |
+| BGCOLOR | Background color of the tooltip. | BGCOLOR="#d3e3f6" |
+| BGIMG | Background image. | BGIMG="images/myBgImg.jpg" |
+| BORDERWIDTH | Width of tooltip border. May be 0 to hide the border. | BORDERWIDTH="3" |
+| BORDERCOLOR | Border color. | BORDERCOLOR="#336699" |
+| DELAY | Tooltip shows up after the specified timeout (milliseconds). | DELAY="1000" |
+| FIX | Fixes the tooltip to the co-ordinates specified. Useful, for example, if combined with the STICKY command. | FIX="[200, 2400]" |
+| FONTCOLOR | Font color. | FONTCOLOR="#993399" |
+| FONTFACE | Font face / family. | FONTFACE="verdana,geneva,sans-serif" |
+| FONTSIZE | Font size + unit. Unit inevitably required. | FONTSIZE="30px" |
+| FONTWEIGHT | Font weight. Available values: "normal" or "bold". | FONTWEIGHT="bold" |
+| LEFT | Tooltip positioned on the left side of the mousepointer. | LEFT="true" |
+| OFFSETX | Horizontal offset from mouse-pointer. | OFFSETX="32" |
+| OFFSETY | Vertical offset from mouse-pointer. | OFFSETY="32" |
+| OPACITY | Transparency of tooltip. Opacity is the opposite of transparency. Value must be a number between 0 (fully transparent) and 100 (opaque, no transparency). Not (yet) supported by Opera. | OPACITY="50" |
+| PADDING | Inner spacing, i.e. the spacing between border and content, for instance text or image(s). | PADDING="5" |
+| SHADOWCOLOR | Creates shadow with the specified color. Shadow width (strength) will be automatically processed to 3 (pixels) if no global shadow width setting can be found in in wz_tooltip.js, and the concerned html tag doesn"t contain a SHADOWWIDTH command. | SHADOWCOLOR="#ccaacc" |
+| SHADOWWIDTH | Creates shadow with the specified width (strength). | SHADOWWIDTH="6" |
+| STATIC | Like OS-based tooltips, the tooltip doesn"t follow the movements of the mouse-pointer. | STATIC="true" |
+| STICKY | The tooltip stays fixed on it's initial position until another tooltip is activated, or the user clicks on the document. | STICKY="true" |
+| TEMP | Specifies a time span in milliseconds after which the tooltip disappears, even if the mousepointer is still on the concerned HTML element, or if the STICKY command has been applied. Values &lt;=0 make the tooltip behave "normally" as if no time span had been specified. | TEMP="3500" |
+| TEXTALIGN | Aligns the text of both the title and the body of the tooltip. Values must be included in single quotes and can be either 'right', 'justify' or 'left', the latter being unnecessary since it is the preset default value. | TEXTALIGN="right" |
+| TITLE | Title. Text in single quotes. Background color is automatically the same as the border color. | TITLE="Some title" |
+| TITLECOLOR | Color of title text. | TITLECOLOR="#ff6666" |
+| WIDTH | Width of tooltip. | WIDTH="200" |
+
+---++ General Settings
+
+Make any settings changes in your Main.SitePreferences topic. Prefix the setting with TOOLTIPPLUGIN_ as in TOOLTIPPLUGIN_DEBUG = 1. *This plugin does not read settings from this topic!*
+
+   * One line description, shown in the %SYSTEMWEB%.TextFormattingRules topic: 
+      * Set SHORTDESCRIPTION = create Tool Tips for links
+
+   * Debug plugin: (See output in =data/debug.txt=) 
+      * Set DEBUG = 0
+
+   * Bypass Javascript load. Set to 1 if you will manually load the javascript as part of the page templates. 
+      * Set JSBYPASS =0
+
+   * Force Javascript load. Set to 1 if you want the plugin to add the Javascript to all pages regardles of the presence or absence of a %TOOLTIP 
+      * Set JSFORCE =0
+
+---++ Plugin Installation Instructions
+
+__Note:__ You do not need to install anything on the browser to use this plugin. The following instructions are for the administrator who installs the plugin on the server where Foswiki is running.
+
+   * Download the ZIP file from the Plugin web (see below)
+   * Unzip *%TOPIC%.zip* in your Foswiki installation directory. Content:
+| *File:* | *Description:* |
+| ==data/System/%TOPIC%.txt== | Plugin topic |
+| ==lib/Foswiki/Plugins/%TOPIC%.pm== | Plugin Perl module |
+| ==pub/System/ToolTipPlugin/ToolTipBackground.jpg== | sample image |
+| ==pub/System/ToolTipPlugin/ToolTipPhoto.gif== | sample image |
+| ==pub/System/ToolTipPlugin/wz_tooltip.js== | wz tooltip library |
+| ==pub/System/ToolTipPlugin/tip_centerwindow.js== | Support for tip centering |
+| ==pub/System/ToolTipPlugin/tip_followscroll.js== | Support for tip to remain stationary as page scrolls behind it. |
+| ==pub/System/ToolTipPlugin/tip_balloon.js== | Support for "Balloon" tips |
+| | |
+| ==pub/System/ToolTipPlugin/lt.gif== | Images used to build "Balloon Tips" |
+| ==pub/System/ToolTipPlugin/background.gif== | |
+| ==pub/System/ToolTipPlugin/b.gif== | |
+| ==pub/System/ToolTipPlugin/rt.gif== | |
+| ==pub/System/ToolTipPlugin/l.gif== | |
+| ==pub/System/ToolTipPlugin/stemt.gif== | |
+| ==pub/System/ToolTipPlugin/lb.gif== | |
+| ==pub/System/ToolTipPlugin/r.gif== | |
+| ==pub/System/ToolTipPlugin/rb.gif== | |
+| ==pub/System/ToolTipPlugin/t.gif== | |
+| ==pub/System/ToolTipPlugin/stemb.gif== | |
+
+*Note:* *pub/System/ToolTipPlugin/wz_tooltip.js* has been left with the default debug parameter enabled. The script recommends that the parameter be set to false when debugging of tooltips is no longer necessary. *var tt_Debug = true*
+
+   * Test if the installation was successful:
+---+++ Testing the plugin
+
+If the javascript is available, the same tooltip is displayed if Plugin is installed and not:
+---
+ With plugin :
+
+*Write:* =%TOO%NOP%LTIP{TEXT="Whaoooo !" FONTCOLOR="#336699" TITLE="Nice tooltip, no ?" SHADOW="true" SHADOWCOLOR="#ccaacc" FONTSIZE="18px"}%= put your mouse here, you should see a tooltip =%TOO%NOP%LTIP{END}=
+
+*See:* %TOOLTIP{TEXT="Whaoooo !" FONTCOLOR="#336699" TITLE="Nice tooltip, no ?" SHADOW="true" SHADOWCOLOR="#ccaacc" FONTSIZE="18px"}% put your mouse here, you should see a tooltip %TOOLTIP{END}%
+---
+ Without plugin : 
+
+*Write:* &lt;a border="0" href="javascript:void(0);" onmouseover="Tip('Whaoooo !', FONTCOLOR, '#336699', TITLE, 'Nice tooltip, no ?', SHADOWCOLOR, '#ccaacc', SHADOW, 'true', FONTSIZE, '18px' )" onmouseout="UnTip()"> put you mouse here, you should see a tooltip &lt;A>
+
+*See:* <a border="0" href="javascript:void(0);" onmouseover="Tip('Whaoooo !', FONTCOLOR, '#336699', TITLE, 'Nice tooltip, no ?', SHADOWCOLOR, '#ccaacc', SHADOW, 'true', FONTSIZE, '18px' )" onmouseout="UnTip()"> put you mouse here, you should see a tooltip </A>. but only if the wz_tooltip.js file has been loaded in the page templates. 
+---
+
+---++ Plugin Info
+
+|  Plugin Author: | TWiki:Main/PatrickNomblot, Foswiki:Main/GeorgeClark |
+|  Plugin Version: | %$VERSION% |
+|  Change History: | |
+|  12 Dec 2008 | Foswikitask:Item8027: Update to latest javascript code, Foswikitask:Item6013: Convert to registerTagHandler, Foswikitask:Item4465: (untested) - registerTagHandler might address this, not reproduced.  Also restructured attachments for balloon tips, and converted to Foswiki name space. |
+|  20 Oct 2008 | Foswiki:Main/GeorgeClark: Rewrite using registered tag handler. Add support for named section includes. |
+|  2 Oct 2008 | Foswiki:Main/GeorgeClark: TWikibug:Item6040: Incomplete implementation of a TWiki::Func routine has security implications |
+|  28 Aug 2008 | Foswiki:Main/GeorgeClark: TWikibug:Item5966: Syntax changed for calling wz_tooltip.js, updated to =wz_tooltip.js= V5.20, reworked documentation, .js file only included when %TOOLTIP is present in the topic. Also added support for optional extensions for balloon, scrolling and centered tips. |
+|  15 Apr 2006 | TWiki:Main/SteffenPoulsen: Updated with new version of =wz_tooltip.js= (updated browser support), support for Dakar, cleaned up doc a bit |
+|  21 Nov 2003 | TWiki:Main/PatrickNomblot: Initial version |
+|  10 Sep 2004 | TWiki:Main/PatrickNomblot: tooltip text can comes from any TOPIC |
+|  29 Dec 2005 | TWiki:Main/AndreUlrich: updated to wz_tooltip.js v. 3.38; added further parameters |
+|  Dependencies: | %$DEPENDENCIES% |
+|  Plugin Home: | http://foswiki.org/Extensions/%TOPIC% |
+
+__Related Topics:__ %TWIKIWEB%.TWikiPreferences, %TWIKIWEB%.TWikiPlugins
+
+-- TWiki:Main/PatrickNomblot - 21 Nov 2003
+
+%META:FILEATTACHMENT{name="stemb.gif" attr="h" comment="Stem bottom image" date="1204621416" path="stemb.gif" size="165" version="1.1"}%
+%META:FILEATTACHMENT{name="r.gif" attr="h" comment="Right border image" date="1204622400" path="r.gif" size="46" version="1.1"}%
+%META:FILEATTACHMENT{name="lb.gif" attr="h" comment="Left bottom corner image" date="1204624186" path="lb.gif" size="85" version="1.1"}%
+%META:FILEATTACHMENT{name="rb.gif" attr="h" comment="Right bottom corner image" date="1204624130" path="rb.gif" size="86" version="1.1"}%
+%META:FILEATTACHMENT{name="tip_followscroll.js" attr="h" comment="Javascript implements tips that remain stationary over a scrolling window" date="1220844879" path="tip_followscroll.js" size="2639" version="1.1"}%
+%META:FILEATTACHMENT{name="background.gif" attr="h" comment="Background image for balloon tips" date="1182397248" path="background.gif" size="43" version="1.1"}%
+%META:FILEATTACHMENT{name="l.gif" attr="h" comment="Left border image" date="1204622408" path="l.gif" size="46" version="1.1"}%
+%META:FILEATTACHMENT{name="ToolTipPhoto.gif" attr="h" comment="Sample inline image" date="1204509496" path="ToolTipPhoto.gif" size="5859" version="1.1"}%
+%META:FILEATTACHMENT{name="stemt.gif" attr="h" comment="Stem top image" date="1204621444" path="stemt.gif" size="167" version="1.1"}%
+%META:FILEATTACHMENT{name="tip_balloon.js" attr="h" comment="Javascript implements balloon tips" date="1220845900" path="tip_balloon.js" size="9084" version="1.1"}%
+%META:FILEATTACHMENT{name="lt.gif" attr="h" comment="Left top corner image" date="1204624172" path="lt.gif" size="86" version="1.1"}%
+%META:FILEATTACHMENT{name="wz_tooltip.js" attr="h" comment="Javascript - master script for all tooltips" date="1219885587" path="wz_tooltip.js" size="36186" version="1.1"}%
+%META:FILEATTACHMENT{name="rt.gif" attr="h" comment="Right top corner image" date="1204624116" path="rt.gif" size="85" version="1.1"}%
+%META:FILEATTACHMENT{name="tip_centerwindow.js" attr="h" comment="Javascript implements center window tips" date="1220844879" path="tip_centerwindow.js" size="3229" version="1.1"}%
+%META:FILEATTACHMENT{name="b.gif" attr="h" comment="Bottom border image" date="1204622412" path="b.gif" size="46" version="1.1"}%
+%META:FILEATTACHMENT{name="ToolTipBackground.jpg" attr="h" comment="Sample background image" date="1219967648" path="ToolTipBackground.jpg" size="350" version="1.1"}%
+%META:FILEATTACHMENT{name="t.gif" attr="h" comment="Top border image" date="1204622418" path="t.gif" size="46" version="1.1"}%
+%META:FILEATTACHMENT{name="example1.jpg" attachment="example1.jpg" attr="h" comment="" date="1223235542" path="example1.jpg" size="16795" stream="IO::File=GLOB(0x8af57e0)" tmpFilename="/usr/tmp/CGItemp9503" user="BaseUserMapping_333" version="1"}%
+%META:FILEATTACHMENT{name="example2.jpg" attachment="example2.jpg" attr="h" comment="" date="1223236390" path="example2.jpg" size="14179" stream="IO::File=GLOB(0x8b188d4)" tmpFilename="/usr/tmp/CGItemp9566" user="BaseUserMapping_333" version="1"}%
+%META:FILEATTACHMENT{name="example3.jpg" attachment="example3.jpg" attr="h" comment="" date="1223236796" path="example3.jpg" size="18146" stream="IO::File=GLOB(0x8b18d64)" tmpFilename="/usr/tmp/CGItemp9483" user="BaseUserMapping_333" version="1"}%
+%META:FILEATTACHMENT{name="example4.jpg" attachment="example4.jpg" attr="h" comment="" date="1223237669" path="example4.jpg" size="27524" stream="IO::File=GLOB(0x8b19a94)" tmpFilename="/usr/tmp/CGItemp9344" user="BaseUserMapping_333" version="1"}%
+%META:FILEATTACHMENT{name="example5.jpg" attachment="example5.jpg" attr="h" comment="" date="1223241394" path="example5.jpg" size="11764" stream="IO::File=GLOB(0x8b1a2fc)" tmpFilename="/usr/tmp/CGItemp9569" user="BaseUserMapping_333" version="1"}%
