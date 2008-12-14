@@ -11,7 +11,7 @@
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details, published at 
+# GNU General Public License for more details, published at
 # http://www.gnu.org/copyleft/gpl.html
 #
 # =========================
@@ -19,11 +19,11 @@
 # This is ToolTip plugin.
 #
 
-
 use strict;
 use warnings;
+
 # =========================
-package Foswiki::Plugins::ToolTipPlugin;    # change the package name and $pluginName!!!
+package Foswiki::Plugins::ToolTipPlugin;
 
 # =========================
 use vars qw(
@@ -43,22 +43,25 @@ $RELEASE = '1.5';
 
 $NO_PREFS_IN_TOPIC = 1;
 
-$pluginName = 'ToolTipPlugin';  # Name of this Plugin
+$pluginName = 'ToolTipPlugin';    # Name of this Plugin
 
 # =========================
-sub initPlugin
-{
+sub initPlugin {
     ( $topic, $web, $user, $installWeb ) = @_;
+
     # check for Plugins.pm versions
-    if( $Foswiki::Plugins::VERSION < 1 ) {
-        Foswiki::Func::writeWarning( "Version mismatch between $pluginName and Plugins.pm" );
+    if ( $Foswiki::Plugins::VERSION < 1 ) {
+        Foswiki::Func::writeWarning(
+            "Version mismatch between $pluginName and Plugins.pm");
         return 0;
     }
 
     # Get plugin debug flag
-    $debug = Foswiki::Func::getPreferencesFlag( "\U$pluginName\E_DEBUG" );
+    $debug = Foswiki::Func::getPreferencesFlag("\U$pluginName\E_DEBUG");
 
-    $DefaultReadersFormat = &Foswiki::Func::getPreferencesValue ("TOOLTIPPLUGIN_READERSFORMAT") || "<li> %READERNAME% : %READERDATE%";
+    $DefaultReadersFormat =
+      &Foswiki::Func::getPreferencesValue("TOOLTIPPLUGIN_READERSFORMAT")
+      || "<li> %READERNAME% : %READERDATE%";
 
     # Flags to indicate that optional javascript files should be included
     # in the <script tags
@@ -74,15 +77,16 @@ sub initPlugin
     Foswiki::Func::registerTagHandler( 'TOOLTIP', \&_TOOLTIP );
 
     # Plugin correctly initialized
-    Foswiki::Func::writeDebug( "- Foswiki::Plugins::${pluginName}::initPlugin( $web.$topic ) is OK" ) if $debug;
+    Foswiki::Func::writeDebug(
+        "- Foswiki::Plugins::${pluginName}::initPlugin( $web.$topic ) is OK")
+      if $debug;
 
     return 1;
-} ### sub initPlugin
+}    ### sub initPlugin
 
 # The function used to handle the %TOOLTIP{...}% macro
 # You would have one of these for each macro you want to process.
-sub _TOOLTIP
-{
+sub _TOOLTIP {
     my ( $session, $params, $theTopic, $theWeb ) = @_;
     my $out = "";
 
@@ -92,7 +96,7 @@ sub _TOOLTIP
 
     if ( ( !$params->{_RAW} ) || ( $params->{_RAW} =~ m/^END$/ ) ) {
         Foswiki::Func::writeDebug(" RETURNING </a> ") if $debug;
-      return "</a>";
+        return "</a>";
     }
 
     $out = "<a border=\"0\" href=\"";
@@ -106,41 +110,54 @@ sub _TOOLTIP
 
     if ( $params->{INCLUDE} ) {
         Foswiki::Func::writeDebug("topic : $params->{INCLUDE} ") if $debug;
-        my $itext   = "%INCLUDE{$params->{INCLUDE}}%";                # Build a standard INCLUDE tag
-        my $incText = &Foswiki::Func::expandCommonVariables($itext);    # Expand the include
-        $incText = &Foswiki::Func::renderText($incText);                #   and render it.
-        $incText =~ s/\n//g;                                          # Remove newlines
-        $text = $incText;                                             # Note INCLUDE will superscede the TEXT parameter
-    } ### if ( $params->{INCLUDE...
+        my $itext =
+          "%INCLUDE{$params->{INCLUDE}}%";    # Build a standard INCLUDE tag
+        my $incText =
+          &Foswiki::Func::expandCommonVariables($itext);    # Expand the include
+        $incText = &Foswiki::Func::renderText($incText);    #   and render it.
+        $incText =~ s/\n//g;                                # Remove newlines
+        $text = $incText;    # Note INCLUDE will superscede the TEXT parameter
+    }    ### if ( $params->{INCLUDE...
 
-    $text =~ s/([^\\])'/$1\\'/g;                                      # Escape any unescaped single-quotes
-    $text =~ s/</&lt;/g;                                              # Escape <
-    $text =~ s/>/&gt;/g;                                              # Escape >
-    $text =~ s/"/&quot;/g;                                            # Escape double quotes
+    $text =~ s/([^\\])'/$1\\'/g;    # Escape any unescaped single-quotes
+    $text =~ s/</&lt;/g;            # Escape <
+    $text =~ s/>/&gt;/g;            # Escape >
+    $text =~ s/"/&quot;/g;          # Escape double quotes
 
     $out .= " onmouseover=\"Tip('$text'";
 
-    foreach my $ky ( keys(%$params) ) {                               # Process the parameter array
-      next if ( $ky eq "TARGET" );                                    #    Bypassing any parameters
-      next if ( $ky eq "URL" );                                       #    That need special processing
-      next if ( $ky eq "TEXT" );                                      #    or are not needed.
-      next if ( $ky eq "INCLUDE" );
-      next if ( $ky eq "_RAW" );
+    foreach my $ky ( keys(%$params) ) {    # Process the parameter array
+        next if ( $ky eq "TARGET" );       #    Bypassing any parameters
+        next if ( $ky eq "URL" );          #    That need special processing
+        next if ( $ky eq "TEXT" );         #    or are not needed.
+        next if ( $ky eq "INCLUDE" );
+        next if ( $ky eq "_RAW" );
 
-        if ( $ky eq "BALLOON" ) {    # If BALLOON tip without an explicit path, set a default set of images.
-            $incBalloon = 1;         # Need to include the Balloon.js file.
+        if ( $ky eq "BALLOON" )
+        { # If BALLOON tip without an explicit path, set a default set of images.
+            $incBalloon = 1;    # Need to include the Balloon.js file.
             if ( !( $params->{BALLOONIMGPATH} ) ) {
-                $out .= ", BALLOONIMGPATH, '$Foswiki::cfg{PubUrlPath}/$Foswiki::cfg{SystemWebName}/$pluginName/balloon/'";
+                $out .=
+", BALLOONIMGPATH, '$Foswiki::cfg{PubUrlPath}/$Foswiki::cfg{SystemWebName}/$pluginName/balloon/'";
             }
-        } ### if ( $ky eq "BALLOON" )
+        }    ### if ( $ky eq "BALLOON" )
 
         $incCenter = 1 if $ky =~ /^CENTER.*/;
         $incFollow = 1 if $ky =~ /^FOLLOW.*/;
 
         if ( $params->{$ky} =~ /^-?\d+$/ ) {    # If signed or unsigned numeric
-            $out .= ", " . $ky . ", " . $params->{$ky};    #    append numeric parameters as comma delimited.
-        } else {
-            $out .= ", " . $ky . ", '" . $params->{$ky} . "'";  #    append text parameters quoted, delimited by comma's
+            $out .=
+                ", " 
+              . $ky . ", "
+              . $params
+              ->{$ky};    #    append numeric parameters as comma delimited.
+        }
+        else {
+            $out .=
+                ", " 
+              . $ky . ", '"
+              . $params->{$ky}
+              . "'";    #    append text parameters quoted, delimited by comma's
         }
 
     }    # foreach my $ky
@@ -149,27 +166,33 @@ sub _TOOLTIP
 
     Foswiki::Func::writeDebug(" TT NEWOUT = $out ") if $debug;
 
-  return $out;
-} ### sub _TOOLTIP
+    return $out;
+}    ### sub _TOOLTIP
 
 # =========================
-sub postRenderingHandler
-{
-    my $force = Foswiki::Func::getPreferencesFlag("\U$pluginName\E_JSFORCE") || 0;
-    if ( !Foswiki::Func::getPreferencesFlag("\U$pluginName\E_JSBYPASS") || $force ) {
+sub postRenderingHandler {
+    my $force = Foswiki::Func::getPreferencesFlag("\U$pluginName\E_JSFORCE")
+      || 0;
+    if ( !Foswiki::Func::getPreferencesFlag("\U$pluginName\E_JSBYPASS")
+        || $force )
+    {
         if ( $incToolTip || $force ) {
             my $sHead =
-              "<script type=\"text/javascript\" src=\"$Foswiki::cfg{PubUrlPath}/$Foswiki::cfg{SystemWebName}/$pluginName/";
+"<script type=\"text/javascript\" src=\"$Foswiki::cfg{PubUrlPath}/$Foswiki::cfg{SystemWebName}/$pluginName/";
             my $sTail   = "\"></script>\n";
             my $scripts = $sHead . "wz_tooltip.js" . $sTail;
-            $scripts .= $sHead . "tip_centerwindow.js" . $sTail if ( $incCenter  || $force );
-            $scripts .= $sHead . "tip_followscroll.js" . $sTail if ( $incFollow  || $force );
-            $scripts .= $sHead . "tip_balloon.js" . $sTail      if ( $incBalloon || $force );
-            $_[0] =~ s|(</body>)|$scripts$1|;   # prepend scripts to closing body tag. 
-        } ### if ( $incToolTip || $force)
-    } ### if ( !Foswiki::Func::getPreferencesFlag...
-  return;
-} ### sub postRenderingHandler
+            $scripts .= $sHead . "tip_centerwindow.js" . $sTail
+              if ( $incCenter || $force );
+            $scripts .= $sHead . "tip_followscroll.js" . $sTail
+              if ( $incFollow || $force );
+            $scripts .= $sHead . "tip_balloon.js" . $sTail
+              if ( $incBalloon || $force );
+            $_[0] =~
+              s|(</body>)|$scripts$1|;    # prepend scripts to closing body tag.
+        }    ### if ( $incToolTip || $force)
+    }    ### if ( !Foswiki::Func::getPreferencesFlag...
+    return;
+}    ### sub postRenderingHandler
 
 1;
 

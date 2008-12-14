@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="BaseUserMapping_333" date="1228539969" format="1.1" version="1.2"}%
+%META:TOPICINFO{author="ProjectContributor" date="1228539969" format="1.1" version="1.2"}%
 ---+!! <nop>%TOPIC%
 
 This is a plugin to generate dynamic Tool Tips in HTML + javascript (mouseover event). This tooltip is based on http://www.walterzorn.com/tooltip/tooltip_e.htm This plugin provides a ==TOOLTIP== Macro that expands into the html and javascript to implement a Tooltip. Also includes the balloon _Simple Skin_ by Stasiek Płoski (Homepage: http://www.flupy.net/stasiek ).
@@ -88,19 +88,32 @@ __Note:__ You do not need to install anything on the browser to use this plugin.
 | ==pub/System/ToolTipPlugin/tip_followscroll.js== | Support for tip to remain stationary as page scrolls behind it. |
 | ==pub/System/ToolTipPlugin/tip_balloon.js== | Support for "Balloon" tips |
 | | |
-| ==pub/System/ToolTipPlugin/lt.gif== | Images used to build "Balloon Tips" |
-| ==pub/System/ToolTipPlugin/background.gif== | |
-| ==pub/System/ToolTipPlugin/b.gif== | |
-| ==pub/System/ToolTipPlugin/rt.gif== | |
-| ==pub/System/ToolTipPlugin/l.gif== | |
-| ==pub/System/ToolTipPlugin/stemt.gif== | |
-| ==pub/System/ToolTipPlugin/lb.gif== | |
-| ==pub/System/ToolTipPlugin/r.gif== | |
-| ==pub/System/ToolTipPlugin/rb.gif== | |
-| ==pub/System/ToolTipPlugin/t.gif== | |
-| ==pub/System/ToolTipPlugin/stemb.gif== | |
+| ==pub/System/ToolTipPlugin/balloon/lt.gif== | Images used to build "Balloon Tips" |
+| ==pub/System/ToolTipPlugin/balloon/background.gif== | |
+| ==pub/System/ToolTipPlugin/balloon/b.gif== | |
+| ==pub/System/ToolTipPlugin/balloon/rt.gif== | |
+| ==pub/System/ToolTipPlugin/balloon/l.gif== | |
+| ==pub/System/ToolTipPlugin/balloon/stemt.gif== | |
+| ==pub/System/ToolTipPlugin/balloon/lb.gif== | |
+| ==pub/System/ToolTipPlugin/balloon/r.gif== | |
+| ==pub/System/ToolTipPlugin/balloon/rb.gif== | |
+| ==pub/System/ToolTipPlugin/balloon/t.gif== | |
+| ==pub/System/ToolTipPlugin/balloon/stemb.gif== | |
+| ==pub/System/ToolTipPlugin/balloon_simple/lt.gif== | Images used to build "Balloon Tips" |
+| ==pub/System/ToolTipPlugin/balloon_simple/background.gif== | |
+| ==pub/System/ToolTipPlugin/balloon_simple/b.gif== | |
+| ==pub/System/ToolTipPlugin/balloon_simple/rt.gif== | |
+| ==pub/System/ToolTipPlugin/balloon_simple/l.gif== | |
+| ==pub/System/ToolTipPlugin/balloon_simple/stemt.gif== | |
+| ==pub/System/ToolTipPlugin/balloon_simple/lb.gif== | |
+| ==pub/System/ToolTipPlugin/balloon_simple/r.gif== | |
+| ==pub/System/ToolTipPlugin/balloon_simple/rb.gif== | |
+| ==pub/System/ToolTipPlugin/balloon_simple/t.gif== | |
+| ==pub/System/ToolTipPlugin/balloon_simple/stemb.gif== | |
 
 *Note:* *pub/System/ToolTipPlugin/wz_tooltip.js* has been left with the default debug parameter enabled. The script recommends that the parameter be set to false when debugging of tooltips is no longer necessary. *var tt_Debug = true*
+
+*Note:* The images supporting Balloon style tips are stored in sub-directories of the =pub/System/ToolTipPlugin= directory and are not managable from the Foswiki interface. 
 
    * Test if the installation was successful:
 ---+++ Testing the plugin
@@ -125,7 +138,7 @@ If the javascript is available, the same tooltip is displayed if Plugin is insta
 |  Plugin Author: | TWiki:Main/PatrickNomblot, Foswiki:Main/GeorgeClark |
 |  Plugin Version: | %$VERSION% |
 |  Change History: | |
-|  12 Dec 2008 | Foswikitask:Item8027: Update to latest javascript code, Foswikitask:Item6013: Convert to registerTagHandler, Foswikitask:Item4465: (untested) - registerTagHandler might address this, not reproduced.  Also restructured attachments for balloon tips, and converted to Foswiki name space. |
+|  12 Dec 2008 | Foswikitask:Item8027: Update to latest javascript code, Foswikitask:Item6013: Convert to registerTagHandler, Foswikitask:Item4485: (untested) - registerTagHandler might address this, not reproduced.  Also restructured attachments for balloon tips, and converted to Foswiki name space. |
 |  20 Oct 2008 | Foswiki:Main/GeorgeClark: Rewrite using registered tag handler. Add support for named section includes. |
 |  2 Oct 2008 | Foswiki:Main/GeorgeClark: TWikibug:Item6040: Incomplete implementation of a TWiki::Func routine has security implications |
 |  28 Aug 2008 | Foswiki:Main/GeorgeClark: TWikibug:Item5966: Syntax changed for calling wz_tooltip.js, updated to =wz_tooltip.js= V5.20, reworked documentation, .js file only included when %TOOLTIP is present in the topic. Also added support for optional extensions for balloon, scrolling and centered tips. |
@@ -157,8 +170,8 @@ __Related Topics:__ %TWIKIWEB%.TWikiPreferences, %TWIKIWEB%.TWikiPlugins
 %META:FILEATTACHMENT{name="b.gif" attr="h" comment="Bottom border image" date="1204622412" path="b.gif" size="46" version="1.1"}%
 %META:FILEATTACHMENT{name="ToolTipBackground.jpg" attr="h" comment="Sample background image" date="1219967648" path="ToolTipBackground.jpg" size="350" version="1.1"}%
 %META:FILEATTACHMENT{name="t.gif" attr="h" comment="Top border image" date="1204622418" path="t.gif" size="46" version="1.1"}%
-%META:FILEATTACHMENT{name="example1.jpg" attachment="example1.jpg" attr="h" comment="" date="1223235542" path="example1.jpg" size="16795" stream="IO::File=GLOB(0x8af57e0)" tmpFilename="/usr/tmp/CGItemp9503" user="BaseUserMapping_333" version="1"}%
-%META:FILEATTACHMENT{name="example2.jpg" attachment="example2.jpg" attr="h" comment="" date="1223236390" path="example2.jpg" size="14179" stream="IO::File=GLOB(0x8b188d4)" tmpFilename="/usr/tmp/CGItemp9566" user="BaseUserMapping_333" version="1"}%
-%META:FILEATTACHMENT{name="example3.jpg" attachment="example3.jpg" attr="h" comment="" date="1223236796" path="example3.jpg" size="18146" stream="IO::File=GLOB(0x8b18d64)" tmpFilename="/usr/tmp/CGItemp9483" user="BaseUserMapping_333" version="1"}%
-%META:FILEATTACHMENT{name="example4.jpg" attachment="example4.jpg" attr="h" comment="" date="1223237669" path="example4.jpg" size="27524" stream="IO::File=GLOB(0x8b19a94)" tmpFilename="/usr/tmp/CGItemp9344" user="BaseUserMapping_333" version="1"}%
-%META:FILEATTACHMENT{name="example5.jpg" attachment="example5.jpg" attr="h" comment="" date="1223241394" path="example5.jpg" size="11764" stream="IO::File=GLOB(0x8b1a2fc)" tmpFilename="/usr/tmp/CGItemp9569" user="BaseUserMapping_333" version="1"}%
+%META:FILEATTACHMENT{name="example1.jpg" attachment="example1.jpg" attr="h" comment="" date="1223235542" path="example1.jpg" size="16795" stream="IO::File=GLOB(0x8af57e0)" tmpFilename="/usr/tmp/CGItemp9503" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="example2.jpg" attachment="example2.jpg" attr="h" comment="" date="1223236390" path="example2.jpg" size="14179" stream="IO::File=GLOB(0x8b188d4)" tmpFilename="/usr/tmp/CGItemp9566" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="example3.jpg" attachment="example3.jpg" attr="h" comment="" date="1223236796" path="example3.jpg" size="18146" stream="IO::File=GLOB(0x8b18d64)" tmpFilename="/usr/tmp/CGItemp9483" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="example4.jpg" attachment="example4.jpg" attr="h" comment="" date="1223237669" path="example4.jpg" size="27524" stream="IO::File=GLOB(0x8b19a94)" tmpFilename="/usr/tmp/CGItemp9344" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="example5.jpg" attachment="example5.jpg" attr="h" comment="" date="1223241394" path="example5.jpg" size="11764" stream="IO::File=GLOB(0x8b1a2fc)" tmpFilename="/usr/tmp/CGItemp9569" user="ProjectContributor" version="1"}%

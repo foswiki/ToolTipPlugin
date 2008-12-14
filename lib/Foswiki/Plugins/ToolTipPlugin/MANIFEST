@@ -1,37 +1,36 @@
-data/System/ToolTipPlugin.txt 0644
-lib/Foswiki/Plugins/ToolTipPlugin.pm 0755
-pub/System/ToolTipPlugin/ToolTipBackground.jpg 0644
-pub/System/ToolTipPlugin/ToolTipPhoto.gif 0644
-pub/System/ToolTipPlugin/balloon/b.gif 0644
-pub/System/ToolTipPlugin/balloon/background.gif 0644
-pub/System/ToolTipPlugin/balloon/l.gif 0644
-pub/System/ToolTipPlugin/balloon/lb.gif 0644
-pub/System/ToolTipPlugin/balloon/lt.gif 0644
-pub/System/ToolTipPlugin/balloon/r.gif 0644
-pub/System/ToolTipPlugin/balloon/rb.gif 0644
-pub/System/ToolTipPlugin/balloon/rt.gif 0644
-pub/System/ToolTipPlugin/balloon/stemb.gif 0644
-pub/System/ToolTipPlugin/balloon/stemt.gif 0644
-pub/System/ToolTipPlugin/balloon/t.gif 0644
-pub/System/ToolTipPlugin/balloon_simple/b.gif 0644
-pub/System/ToolTipPlugin/balloon_simple/background.gif 0644
-pub/System/ToolTipPlugin/balloon_simple/l.gif 0644
-pub/System/ToolTipPlugin/balloon_simple/lb.gif 0644
-pub/System/ToolTipPlugin/balloon_simple/lt.gif 0644
-pub/System/ToolTipPlugin/balloon_simple/r.gif 0644
-pub/System/ToolTipPlugin/balloon_simple/rb.gif 0644
-pub/System/ToolTipPlugin/balloon_simple/rt.gif 0644
-pub/System/ToolTipPlugin/balloon_simple/stemb.gif 0644
-pub/System/ToolTipPlugin/balloon_simple/stemt.gif 0644
-pub/System/ToolTipPlugin/balloon_simple/t.gif 0644
+data/System/ToolTipPlugin.txt 0644 Plugin topic
+lib/Foswiki/Plugins/ToolTipPlugin.pm 0755 Plugin Module
+pub/System/ToolTipPlugin/ToolTipBackground.jpg 0644 Background image for example tips
+pub/System/ToolTipPlugin/ToolTipPhoto.gif 0644 Image included in example tips
+pub/System/ToolTipPlugin/balloon/b.gif 0644 Balloon - bottom edge
+pub/System/ToolTipPlugin/balloon/background.gif 0644 Balloon background
+pub/System/ToolTipPlugin/balloon/l.gif 0644 Balloon - left edge
+pub/System/ToolTipPlugin/balloon/lb.gif 0644 Balloon - left bottom corner
+pub/System/ToolTipPlugin/balloon/lt.gif 0644 Balloon - left top corner
+pub/System/ToolTipPlugin/balloon/r.gif 0644 Balloon - right edge
+pub/System/ToolTipPlugin/balloon/rb.gif 0644 Balloon - right bottom corner
+pub/System/ToolTipPlugin/balloon/rt.gif 0644 Balloon - right top corner
+pub/System/ToolTipPlugin/balloon/stemb.gif 0644 Balloon - Stem bottom
+pub/System/ToolTipPlugin/balloon/stemt.gif 0644 Ballon - Stem top
+pub/System/ToolTipPlugin/balloon/t.gif 0644 Balloon - top edge
+pub/System/ToolTipPlugin/balloon_simple/b.gif 0644 Simple balloon - bottom edge 
+pub/System/ToolTipPlugin/balloon_simple/background.gif 0644 Simple balloon - background  
+pub/System/ToolTipPlugin/balloon_simple/l.gif 0644 Simple balloon - left edge
+pub/System/ToolTipPlugin/balloon_simple/lb.gif 0644 Simple balloon - left bottom corner 
+pub/System/ToolTipPlugin/balloon_simple/lt.gif 0644 Simple balloon -left top corner 
+pub/System/ToolTipPlugin/balloon_simple/r.gif 0644 Simple balloon - right edge 
+pub/System/ToolTipPlugin/balloon_simple/rb.gif 0644 Simple balloon - right bottom corner 
+pub/System/ToolTipPlugin/balloon_simple/rt.gif 0644 Simple balloon - right top corner
+pub/System/ToolTipPlugin/balloon_simple/stemb.gif 0644 Simple balloon - stem bottom 
+pub/System/ToolTipPlugin/balloon_simple/stemt.gif 0644 Simple balloon - stem top
+pub/System/ToolTipPlugin/balloon_simple/t.gif 0644 Simple ballon - top edge
 pub/System/ToolTipPlugin/balloon_simple/tip_balloon_simple.png 0644
-pub/System/ToolTipPlugin/example1.jpg 0644
-pub/System/ToolTipPlugin/example2.jpg 0644
-pub/System/ToolTipPlugin/example3.jpg 0644
-pub/System/ToolTipPlugin/example4.jpg 0644
-pub/System/ToolTipPlugin/example5.jpg 0644
-pub/System/ToolTipPlugin/tip_balloon.js 0644
-pub/System/ToolTipPlugin/tip_centerwindow.js 0644
-pub/System/ToolTipPlugin/tip_followscroll.js 0644
-pub/System/ToolTipPlugin/wz_tooltip.js 0644
-
+pub/System/ToolTipPlugin/example1.jpg 0644 Sample tip
+pub/System/ToolTipPlugin/example2.jpg 0644 Sample tip
+pub/System/ToolTipPlugin/example3.jpg 0644 Sample tip
+pub/System/ToolTipPlugin/example4.jpg 0644 Sample tip
+pub/System/ToolTipPlugin/example5.jpg 0644 sample tip
+pub/System/ToolTipPlugin/tip_balloon.js 0644 Javascript for balloon tips
+pub/System/ToolTipPlugin/tip_centerwindow.js 0644 Javascript for centered tips
+pub/System/ToolTipPlugin/tip_followscroll.js 0644 Javascript for tip to float over scrolling page
+pub/System/ToolTipPlugin/wz_tooltip.js 0644 Main javascript 
