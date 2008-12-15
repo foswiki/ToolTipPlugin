@@ -153,23 +153,12 @@ __Related Topics:__ %TWIKIWEB%.TWikiPreferences, %TWIKIWEB%.TWikiPlugins
 
 -- TWiki:Main/PatrickNomblot - 21 Nov 2003
 
-%META:FILEATTACHMENT{name="stemb.gif" attr="h" comment="Stem bottom image" date="1204621416" path="stemb.gif" size="165" version="1.1"}%
-%META:FILEATTACHMENT{name="r.gif" attr="h" comment="Right border image" date="1204622400" path="r.gif" size="46" version="1.1"}%
-%META:FILEATTACHMENT{name="lb.gif" attr="h" comment="Left bottom corner image" date="1204624186" path="lb.gif" size="85" version="1.1"}%
-%META:FILEATTACHMENT{name="rb.gif" attr="h" comment="Right bottom corner image" date="1204624130" path="rb.gif" size="86" version="1.1"}%
 %META:FILEATTACHMENT{name="tip_followscroll.js" attr="h" comment="Javascript implements tips that remain stationary over a scrolling window" date="1220844879" path="tip_followscroll.js" size="2639" version="1.1"}%
-%META:FILEATTACHMENT{name="background.gif" attr="h" comment="Background image for balloon tips" date="1182397248" path="background.gif" size="43" version="1.1"}%
-%META:FILEATTACHMENT{name="l.gif" attr="h" comment="Left border image" date="1204622408" path="l.gif" size="46" version="1.1"}%
 %META:FILEATTACHMENT{name="ToolTipPhoto.gif" attr="h" comment="Sample inline image" date="1204509496" path="ToolTipPhoto.gif" size="5859" version="1.1"}%
-%META:FILEATTACHMENT{name="stemt.gif" attr="h" comment="Stem top image" date="1204621444" path="stemt.gif" size="167" version="1.1"}%
 %META:FILEATTACHMENT{name="tip_balloon.js" attr="h" comment="Javascript implements balloon tips" date="1220845900" path="tip_balloon.js" size="9084" version="1.1"}%
-%META:FILEATTACHMENT{name="lt.gif" attr="h" comment="Left top corner image" date="1204624172" path="lt.gif" size="86" version="1.1"}%
 %META:FILEATTACHMENT{name="wz_tooltip.js" attr="h" comment="Javascript - master script for all tooltips" date="1219885587" path="wz_tooltip.js" size="36186" version="1.1"}%
-%META:FILEATTACHMENT{name="rt.gif" attr="h" comment="Right top corner image" date="1204624116" path="rt.gif" size="85" version="1.1"}%
 %META:FILEATTACHMENT{name="tip_centerwindow.js" attr="h" comment="Javascript implements center window tips" date="1220844879" path="tip_centerwindow.js" size="3229" version="1.1"}%
-%META:FILEATTACHMENT{name="b.gif" attr="h" comment="Bottom border image" date="1204622412" path="b.gif" size="46" version="1.1"}%
 %META:FILEATTACHMENT{name="ToolTipBackground.jpg" attr="h" comment="Sample background image" date="1219967648" path="ToolTipBackground.jpg" size="350" version="1.1"}%
-%META:FILEATTACHMENT{name="t.gif" attr="h" comment="Top border image" date="1204622418" path="t.gif" size="46" version="1.1"}%
 %META:FILEATTACHMENT{name="example1.jpg" attachment="example1.jpg" attr="h" comment="" date="1223235542" path="example1.jpg" size="16795" stream="IO::File=GLOB(0x8af57e0)" tmpFilename="/usr/tmp/CGItemp9503" user="ProjectContributor" version="1"}%
 %META:FILEATTACHMENT{name="example2.jpg" attachment="example2.jpg" attr="h" comment="" date="1223236390" path="example2.jpg" size="14179" stream="IO::File=GLOB(0x8b188d4)" tmpFilename="/usr/tmp/CGItemp9566" user="ProjectContributor" version="1"}%
 %META:FILEATTACHMENT{name="example3.jpg" attachment="example3.jpg" attr="h" comment="" date="1223236796" path="example3.jpg" size="18146" stream="IO::File=GLOB(0x8b18d64)" tmpFilename="/usr/tmp/CGItemp9483" user="ProjectContributor" version="1"}%
