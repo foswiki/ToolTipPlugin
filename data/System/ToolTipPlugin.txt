@@ -177,12 +177,8 @@ __Related Topics:__ %TWIKIWEB%.TWikiPreferences, %TWIKIWEB%.TWikiPlugins
 %META:FILEATTACHMENT{name="example5.jpg" attachment="example5.jpg" attr="h" comment="" date="1223241394" path="example5.jpg" size="11764" stream="IO::File=GLOB(0x8b1a2fc)" tmpFilename="/usr/tmp/CGItemp9569" user="ProjectContributor" version="1"}%
 
 %META:FORM{name="PackageForm"}%
-%META:FIELD{name="TopicClassification" attributes=""
-%title="TopicClassification" value="PluginPackage"}%
-%META:FIELD{name="Compatibility" attributes="" title="[[Compatibility]]"
-%value=""}%
+%META:FIELD{name="TopicClassification" attributes="" %title="TopicClassification" value="PluginPackage"}%
+%META:FIELD{name="Compatibility" attributes="" title="[[Compatibility]]" %value=""}%
 %META:FIELD{name="DemoUrl" attributes="" title="DemoUrl" value="http://"}%
-%META:FIELD{name="DevelopedInSVN" attributes="" title="DevelopedInSVN"
-%value="Yes"}%
-%META:FIELD{name="ModificationPolicy" attributes="" title="ModificationPolicy"
-%value="PleaseFeelFreeToModify"}%
+%META:FIELD{name="DevelopedInSVN" attributes="" title="DevelopedInSVN" %value="Yes"}%
+%META:FIELD{name="ModificationPolicy" attributes="" title="ModificationPolicy" %value="PleaseFeelFreeToModify"}%
